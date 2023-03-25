@@ -1,4 +1,4 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 // console.log(galleryItems);
@@ -33,42 +33,33 @@ import { galleryItems } from './gallery-items.js';
 //   showCounter: false,
 // });
 
-
-const galleryEl = document.querySelector('.gallery');
+const galleryEl = document.querySelector(".gallery");
 const galleryMarkup = createCardsMarkup(galleryItems);
 
-galleryEl.insertAdjacentHTML('beforeend', galleryMarkup);
-galleryEl.addEventListener('click', onGalleryClick);
-
-// var lightbox = $('.gallery a').simpleLightbox({
-//   captions: true,
-//   captionsData: 'alt',
-//   captionDelay: 250,
-//   animationSpeed: 550,
-//   navText: 	['←','→'], });
-
-
-let lightbox = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionsData: 'alt',
-  captionDelay: 250,
-  animationSpeed: 450,
-  navText: 	['←','→'],
-  captionPosition:	'bottom',
-  closeText:	'×',
-  focus:	true,
-});
+galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
+galleryEl.addEventListener("click", onGalleryClick);
 
 function createCardsMarkup(images) {
   return images
     .map(({ preview, original, description }) => {
       return `<li class="gallery__item"><a class="gallery__link"  width="780" height="auto" href="${original}"><img class="gallery__image" src="${preview}" alt="${description}"  /></a></li>`;
     })
-    .join('');
+    .join("");
 }
 
+let lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+  animationSpeed: 450,
+  navText: ["←", "→"],
+  captionPosition: "bottom",
+  closeText: "×",
+  focus: true,
+});
+
 function onGalleryClick(evt) {
-  if (evt.target.nodeName !== 'IMG') {
+  if (evt.target.nodeName !== "IMG") {
     return;
   }
 
